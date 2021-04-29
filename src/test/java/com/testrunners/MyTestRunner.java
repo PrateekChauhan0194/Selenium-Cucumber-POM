@@ -9,7 +9,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions (
 		features = {"src/test/resources/com/features"},
 		glue = {"com/stepdefs", "com/apphooks"},
-		plugin = {"pretty"}
+		plugin = {"pretty"},
+		tags = "not @ignore"
 		)
 
 public class MyTestRunner {

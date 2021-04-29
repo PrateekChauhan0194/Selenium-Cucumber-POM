@@ -33,7 +33,6 @@ public class AccountsPageSteps {
 		DriverFactory.getDriver().get(prop.getProperty("LOGIN_URL"));
 		loginPage = new LoginPage(DriverFactory.getDriver());
 		accountsPage = loginPage.doLogin(email, password);
-		
 	}
 
 	@Given("user is on Accounts page")
