@@ -30,3 +30,5 @@ target
 .project
 .settings
 *.iml
+test-output
+test output

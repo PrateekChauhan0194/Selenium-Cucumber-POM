@@ -28,7 +28,7 @@
     <cucumber.version>6.9.0</cucumber.version>
     <junit.version>4.13.2</junit.version>
     <webdrtivermanager.version>4.4.0</webdrtivermanager.version>
-    <extentreports.cucumber6.adapter.version>2.6.0</extentreports.cucumber6.adapter.version>
+    <extentreports.cucumber6.adapter.version>2.8.1</extentreports.cucumber6.adapter.version>
     <testng.version>7.4.0</testng.version>
     <selenium.java.version>3.141.59</selenium.java.version>
     <apache.poi.version>4.1.2</apache.poi.version>

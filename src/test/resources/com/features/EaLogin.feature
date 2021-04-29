@@ -1,5 +1,6 @@
+@ignore @regression
 Feature: Energy Australia Login Feature
-	@ignore
+	
   Scenario: Validate Crisis message
     Given User is on the EA Login page
     Then User sees the crisis message on the screen
