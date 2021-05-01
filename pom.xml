@@ -134,8 +134,9 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.version}</version>
         <executions>
+          <!-- Below execution block is to configure the 'test' goal using surefire -->
           <!-- Maven command to execute the following goal: 'mvn test' -->
-          <execution>
+          <!-- <execution>
             <id>smoke-test</id>
             <goals>
               <goal>test</goal>
@@ -148,7 +149,7 @@
               <threadCount>2</threadCount>
               <useUnlimitedThreads>false</useUnlimitedThreads>
             </configuration>
-          </execution>
+          </execution> -->
         </executions>
       </plugin>
 
@@ -159,9 +160,10 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M3</version>
         <executions>
-          <!-- Maven command to execute the following goal: 'mvn integration-test' -->
-          <!-- NOTE: Executing 'mvn integration-test' will also execute,
-                      'mvn test' implicitly before running the integration-test because of mvn lifecycle rules -->
+          <!-- Maven command to execute the following goal: 'mvn integration-test' or 'mvn verify' -->
+          <!-- NOTE: Executing 'mvn integration-test' will also execute the
+                      executions configured in the surefire plugin implicitly
+                      before running the integration-test because of mvn lifecycle rules -->
           <execution>
             <id>regression-test</id>
             <goals>
