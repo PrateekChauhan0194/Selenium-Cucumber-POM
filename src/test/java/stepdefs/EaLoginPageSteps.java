@@ -1,4 +1,4 @@
-package com.stepdefs;
+package stepdefs;
 
 import java.util.Properties;
 

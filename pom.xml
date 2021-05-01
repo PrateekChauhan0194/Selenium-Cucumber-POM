@@ -80,19 +80,21 @@
       <scope>test</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.testng</groupId>-->
-<!--      <artifactId>testng</artifactId>-->
-<!--      <version>${testng.version}</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <!-- NOTE: Following dependency conflicts with the normal failsafe executions. DISABLE this dependency to fix the issue. -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>io.cucumber</groupId>-->
-<!--      <artifactId>cucumber-testng</artifactId>-->
-<!--      <version>${cucumber.version}</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <!-- NOTE: Following dependency conflicts with the normal failsafe executions. DISABLE this dependency to fix the issue. -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -137,13 +139,13 @@
           <!-- Below execution block is to configure the 'test' goal using surefire -->
           <!-- Maven command to execute the following goal: 'mvn test' -->
           <!-- <execution>
-            <id>smoke-test</id>
+            <id>testng-parallel-tests</id>
             <goals>
               <goal>test</goal>
             </goals>
             <configuration>
               <includes>
-                <include>**/SmokeTestRunner.java</include>
+                <include>**/TestNgParallelRunner.java</include>
               </includes>
               <parallel>methods</parallel>
               <threadCount>2</threadCount>
@@ -178,7 +180,8 @@
 
               <includes>
               	<!-- BELOW LINE - To execute feature files with a single runner -->
-                <include>**/RegressionTestRunner.java</include>
+                <!-- <include>**/RegressionTestRunner.java</include> -->
+                <include>**/TestNgParallelRunner.java</include>
 
                 <!-- BELOW LINE - To execute feature files with multiple runners -->
                 <!-- <include>**/*Runner.java</include> -->

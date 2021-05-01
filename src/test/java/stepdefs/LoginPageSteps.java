@@ -1,4 +1,4 @@
-package com.stepdefs;
+package stepdefs;
 
 import java.util.Properties;
 
@@ -56,4 +56,5 @@ public class LoginPageSteps {
 	public void user_clicks_on_login_button() {
 		loginPage.clickOnLogin();
 	}
+
 }
