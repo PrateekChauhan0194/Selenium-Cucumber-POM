@@ -1,4 +1,4 @@
-package com.stepdefs;
+package stepdefs;
 
 import java.util.List;
 import java.util.Map;
