@@ -32,3 +32,4 @@ target
 *.iml
 test-output
 test output
+test-output-thread

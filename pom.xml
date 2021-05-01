@@ -80,19 +80,19 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>${testng.version}</version>
-      <scope>test</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.testng</groupId>-->
+<!--      <artifactId>testng</artifactId>-->
+<!--      <version>${testng.version}</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-testng</artifactId>
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.cucumber</groupId>-->
+<!--      <artifactId>cucumber-testng</artifactId>-->
+<!--      <version>${cucumber.version}</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -133,46 +133,69 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.version}</version>
-        <configuration>
-          <includes>
-            <include>**/ParallelRun.java</include>
-          </includes>
-          <parallel>methods</parallel>
-          <threadCount>4</threadCount>
-          <useUnlimitedThreads>false</useUnlimitedThreads>
-        </configuration>
+        <executions>
+          <!-- Maven command to execute the following goal: 'mvn test' -->
+          <execution>
+            <id>smoke-test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <includes>
+                <include>**/SmokeTestRunner.java</include>
+              </includes>
+              <parallel>methods</parallel>
+              <threadCount>2</threadCount>
+              <useUnlimitedThreads>false</useUnlimitedThreads>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
-      <!-- <plugin>
+
+	  <!-- Following is the configuration for the maven failsafe plugin which will be required for the parallel execution of tests -->
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M3</version>
         <executions>
+          <!-- Maven command to execute the following goal: 'mvn integration-test' -->
+          <!-- NOTE: Executing 'mvn integration-test' will also execute,
+                      'mvn test' implicitly before running the integration-test because of mvn lifecycle rules -->
           <execution>
+            <id>regression-test</id>
             <goals>
               <goal>integration-test</goal>
             </goals>
-            <configuration> UNCOMMENT - To add any exclusions if required
-              <excludes>
-                <exclude>**/*IT*.java</exclude>
-              </excludes>
-              <includes> UNCOMMENT BELOW LINE - To execute feature files with a single runner
-                <include>**/MyTestRunner.java</include>
-                UNCOMMENT BELOW LINE - To execute feature files with multiple runners
-                <include>**/*Runner.java</include>
-              </includes> UNCOMMENT BELOW 3 LINES - To execute using parallel or combination option
-              <parallel>methods</parallel>
-              <threadCount>4</threadCount>
-              <perCoreThreadCount>true</perCoreThreadCount>
-              UNCOMMENT BELOW 3 LINES - To execute using forking or combination option
+            <configuration>
 
+              <!-- UNCOMMENT - To add any exclusions if required -->
+              <!-- <excludes>
+                 <exclude>**/*IT*.java</exclude>
+               </excludes> -->
+
+              <includes>
+              	<!-- BELOW LINE - To execute feature files with a single runner -->
+                <include>**/RegressionTestRunner.java</include>
+
+                <!-- BELOW LINE - To execute feature files with multiple runners -->
+                <!-- <include>**/*Runner.java</include> -->
+              </includes>
+
+              <!-- BELOW 3 LINES - To execute using parallel or combination option -->
+              <parallel>methods</parallel>
+              <threadCount>5</threadCount>
+              <perCoreThreadCount>true</perCoreThreadCount>
+
+              <!-- BELOW 3 LINES - To execute using forking or combination option -->
               <forkCount>2</forkCount>
               <reuseForks>true</reuseForks>
               <reportsDirectory>${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory>
+
             </configuration>
           </execution>
         </executions>
-      </plugin> -->
+      </plugin>
 
     </plugins>
   </build>
