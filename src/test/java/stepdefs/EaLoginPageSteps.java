@@ -14,6 +14,7 @@ import com.qa.util.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.asserts.SoftAssert;
 
 public class EaLoginPageSteps {
 
@@ -35,10 +36,15 @@ public class EaLoginPageSteps {
 
 	@Then("User validates the crisis message text")
 	public void user_validates_the_crisis_message_text() {
-		Assert.assertEquals(
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(
 				eaLoginPage.getExpectedCrisisMessageContent(),
 				eaLoginPage.getCrisisMessageContent()
-			);
+		);
+//		Assert.assertEquals(
+//				eaLoginPage.getExpectedCrisisMessageContent(),
+//				eaLoginPage.getCrisisMessageContent()
+//			);
 	}
 	
 	@Then("User validates the crisis message close link text")
