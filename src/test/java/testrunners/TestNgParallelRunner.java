@@ -9,9 +9,12 @@ import org.testng.annotations.DataProvider;
         glue = {"stepdefs", "hooks"},
         plugin = {
                 "pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "timeline:test-output-thread",
                 "rerun:target/failedCases.txt"
         },
-        monochrome = true
+        monochrome = true,
+        tags = "not @ignore"
 )
 
 public class TestNgParallelRunner extends AbstractTestNGCucumberTests {

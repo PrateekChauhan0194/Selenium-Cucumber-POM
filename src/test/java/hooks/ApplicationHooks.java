@@ -2,6 +2,7 @@ package hooks;
 
 import java.util.Properties;
 
+import org.junit.Assume;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,13 @@ public class ApplicationHooks {
 	private ConfigReader configReader;
 	private Properties prop;
 	private String propFilePath;
-	
+
+	@Before(value = "@ignore", order = 0)
+	public void skipScenario(Scenario sc) {
+		System.out.println("SKIPPED SCENARIO: " + sc.getName());
+		Assume.assumeTrue(false);
+	}
+
 	@Before(order = 0)
 	public void getProperty() {
 		propFilePath = "./src/test/resources/config/config.properties";
