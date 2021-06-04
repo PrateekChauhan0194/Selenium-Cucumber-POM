@@ -14,7 +14,7 @@ import org.testng.annotations.DataProvider;
                 "rerun:target/failedCases.txt"
         },
         monochrome = true,
-        tags = "not @ignore"
+        tags = "@test and not @ignore"
 )
 
 public class TestNgParallelRunner extends AbstractTestNGCucumberTests {
